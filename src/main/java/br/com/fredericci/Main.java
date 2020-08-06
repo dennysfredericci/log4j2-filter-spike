@@ -16,7 +16,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
         Configuration config = ctx.getConfiguration();
 

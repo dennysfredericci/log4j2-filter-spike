@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.config.Configuration;
+import org.apache.logging.log4j.core.config.Configurator;
 import org.apache.logging.log4j.core.config.LoggerConfig;
 import org.apache.logging.log4j.core.filter.AbstractFilter;
 
@@ -27,8 +28,13 @@ public class Main {
         rootLogger.addFilter(loggerFilter);
 
         ctx.updateLoggers(config);
+        Configurator.reconfigure(config);
 
-        log.info("Just a random log...");
+        log.info("Just a random log... 1");
+        log.info("Just a random log... 2");
+        log.info("Just a random log... 3");
+        log.info("Just a random log... 4");
+        log.info("Just a random log... 5");
 
 
         System.out.printf("Global Filter: %s %n", globalFilter.getCounter());

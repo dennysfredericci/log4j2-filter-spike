@@ -20,15 +20,12 @@ public class Main {
         LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
         Configuration config = ctx.getConfiguration();
 
-        MyGlobalFilter globalFilter = new MyGlobalFilter();
-        config.addFilter(globalFilter);
-
         LoggerConfig rootLogger = config.getRootLogger();
         LoggerFilter loggerFilter = new LoggerFilter();
         rootLogger.addFilter(loggerFilter);
 
         ctx.updateLoggers(config);
-        Configurator.reconfigure(config);
+        Configurator.reconfigure(config); // Same issue: https://issues.apache.org/jira/browse/LOG4J2-807 ?
 
         log.info("Just a random log... 1");
         log.info("Just a random log... 2");
@@ -36,8 +33,6 @@ public class Main {
         log.info("Just a random log... 4");
         log.info("Just a random log... 5");
 
-
-        System.out.printf("Global Filter: %s %n", globalFilter.getCounter());
         System.out.printf("Logger Filter: %s %n", loggerFilter.getCounter());
 
     }
